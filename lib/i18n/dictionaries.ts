@@ -188,6 +188,7 @@ export const dictionaries = {
     "auth.google": "Continuer avec Google",
     "auth.facebook": "Continuer avec Facebook",
     "auth.or": "ou",
+    "auth.socialError": "Connexion indisponible pour le moment. Utilisez votre email ci-dessous.",
     // Contact
     "contact.coords": "Nos coordonnées",
     "contact.coordsDesc": "Contactez-nous par le canal de votre choix, nous vous répondons rapidement.",
@@ -422,6 +423,7 @@ export const dictionaries = {
     "auth.google": "Continue with Google",
     "auth.facebook": "Continue with Facebook",
     "auth.or": "or",
+    "auth.socialError": "Sign-in unavailable right now. Use your email below.",
     "contact.coords": "Contact details",
     "contact.coordsDesc": "Reach us through the channel of your choice, we reply quickly.",
     "contact.sendMsg": "Send us a message",

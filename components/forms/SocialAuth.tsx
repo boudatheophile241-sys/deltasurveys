@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, AlertCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useTranslation } from "@/components/i18n/LocaleProvider";
 
@@ -27,20 +27,31 @@ function FacebookIcon() {
 export function SocialAuth({ redirectTo }: { redirectTo?: string }) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<"google" | "facebook" | null>(null);
+  const [failed, setFailed] = useState(false);
 
   const signIn = async (provider: "google" | "facebook") => {
     setLoading(provider);
+    setFailed(false);
     const supabase = createClient();
     const redirect = redirectTo ? `?redirect=${encodeURIComponent(redirectTo)}` : "";
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: { redirectTo: `${window.location.origin}/auth/callback${redirect}` },
     });
-    if (error) setLoading(null);
+    if (error) {
+      setLoading(null);
+      setFailed(true);
+    }
   };
 
   return (
     <div className="space-y-3">
+      {failed && (
+        <div className="flex items-center gap-2 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {t("auth.socialError")}
+        </div>
+      )}
       <button
         type="button"
         onClick={() => signIn("google")}

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-navy-100;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-white text-navy-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  ::selection {
+    @apply bg-brand-red/15 text-brand-red;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-5 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-red;
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 bg-clip-text text-transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 active:scale-[0.98];
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-navy-100 bg-white shadow-card;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .input-field {
+    @apply h-12 w-full rounded-xl border border-navy-100 bg-navy-50/50 px-4 text-sm text-navy-800 outline-none transition placeholder:text-navy-400 focus:border-navy-300 focus:bg-white focus:ring-4 focus:ring-navy-100;
+  }
+  textarea.input-field {
+    @apply h-auto py-3;
+  }
+}
+
+/* Barre de defilement discrete */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d2e6;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3b3d1;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -184,6 +184,8 @@ function Social({
     <a
       href={href}
       aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
       className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:border-brand-red hover:bg-brand-red hover:text-white"
     >
       {children}

@@ -1,16 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Linkedin,
-  Youtube,
-  Instagram,
-  Clock,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Clock } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { PaymentIcons } from "@/components/ui/PaymentIcons";
@@ -54,14 +45,8 @@ export function Footer({ logoSrc }: { logoSrc?: string }) {
             <Social href={company.socials.facebook} label="Facebook">
               <Facebook className="h-4.5 w-4.5" />
             </Social>
-            <Social href={company.socials.linkedin} label="LinkedIn">
-              <Linkedin className="h-4.5 w-4.5" />
-            </Social>
-            <Social href={company.socials.youtube} label="YouTube">
-              <Youtube className="h-4.5 w-4.5" />
-            </Social>
-            <Social href={company.socials.instagram} label="Instagram">
-              <Instagram className="h-4.5 w-4.5" />
+            <Social href={company.socials.tiktok} label="TikTok">
+              <TikTokIcon className="h-4.5 w-4.5" />
             </Social>
           </div>
         </div>
@@ -92,9 +77,13 @@ export function Footer({ logoSrc }: { logoSrc?: string }) {
           <FooterTitle>{t("footer.contact")}</FooterTitle>
           <ul className="space-y-4 text-sm">
             <ContactItem icon={<Phone className="h-4.5 w-4.5" />}>
-              <a href={`tel:${company.phoneHref}`} className="hover:text-white">
-                {company.phone}
-              </a>
+              <div className="flex flex-col gap-1">
+                {company.phones.map((p) => (
+                  <a key={p.href} href={`tel:${p.href}`} className="hover:text-white">
+                    {p.display}
+                  </a>
+                ))}
+              </div>
             </ContactItem>
             <ContactItem icon={<Mail className="h-4.5 w-4.5" />}>
               <a href={`mailto:${company.email}`} className="hover:text-white">
@@ -171,6 +160,14 @@ function ContactItem({
       </span>
       <span className="pt-1">{children}</span>
     </li>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3c-1.36 0-2.6-.55-3.54-1.48z" />
+    </svg>
   );
 }
 

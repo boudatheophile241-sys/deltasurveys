@@ -89,16 +89,19 @@ export const company = {
     "Les solutions de topographie et de génie civil au service de votre développement",
   phone: "+226 61 57 19 13",
   phoneHref: "+22661571913",
-  email: "contact@deltasurveys.com",
+  phones: [
+    { display: "+226 61 57 19 13", href: "+22661571913" },
+    { display: "+226 67 96 26 22", href: "+22667962622" },
+    { display: "+226 44 44 89 89", href: "+22644448989" },
+  ],
+  email: "contact.deltasurveys@gmail.com",
   address: "Ouagadougou, Burkina Faso",
   addressLong:
     "Zone du Bois, Ouagadougou, Burkina Faso — Livraison partout en Afrique de l'Ouest",
   hours: "Lun — Sam : 08h00 — 18h30",
   socials: {
-    facebook: "#",
-    linkedin: "#",
-    youtube: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61592596782727",
+    tiktok: "https://www.tiktok.com/@babayaga_fx?_r=1&_t=ZS-98d6g5I3tQ4",
   },
 };
 
@@ -554,7 +557,7 @@ export const stats = [
   { value: "500+", label: "Équipements livrés" },
   { value: "8", label: "Marques partenaires" },
   { value: "12", label: "Pays desservis" },
-  { value: "15 ans", label: "D'expertise terrain" },
+  { value: "5 ans", label: "D'expérience" },
 ];
 
 /* -------------------------------------------------------------------------- */

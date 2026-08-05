@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function ContactPage() {
   const t = await getT();
   const infos = [
-    { icon: Phone, label: t("contact.labelPhone"), value: company.phone, href: `tel:${company.phoneHref}` },
+    { icon: Phone, label: t("contact.labelPhone"), value: company.phones.map((p) => p.display).join("  ·  "), href: `tel:${company.phoneHref}` },
     { icon: Mail, label: t("contact.labelEmail"), value: company.email, href: `mailto:${company.email}` },
     { icon: MapPin, label: t("contact.labelAddress"), value: company.addressLong },
     { icon: Clock, label: t("contact.labelHours"), value: company.hours },

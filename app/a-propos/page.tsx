@@ -39,7 +39,7 @@ export default async function AProposPage() {
       <PageHero
         eyebrow="A propos"
         title="La reference topographie au service de l'Afrique"
-        description="Depuis plus de 15 ans, Delta Surveys équipe et accompagne les geometres, ingenieurs et entreprises de BTP avec passion et exigence."
+        description="Depuis plus de 5 ans, Delta Surveys équipe et accompagne les geometres, ingenieurs et entreprises de BTP avec passion et exigence."
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "A propos" }]}
       />
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { LoginForm } from "@/components/forms/LoginForm";
 import { getT } from "@/lib/i18n/server";
+import { getSiteSettings } from "@/lib/queries";
 
 export const metadata: Metadata = {
   title: "Connexion",
@@ -16,13 +17,14 @@ export default async function ConnexionPage({
 }) {
   const { redirect } = await searchParams;
   const t = await getT();
+  const settings = await getSiteSettings();
   return (
     <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-navy-50/50 py-16">
       <div className="absolute inset-0 bg-grid-navy bg-[size:44px_44px] opacity-40" />
       <div className="container-page relative flex justify-center">
         <div className="w-full max-w-md rounded-3xl border border-navy-100 bg-white p-8 shadow-card">
           <div className="mb-8 flex flex-col items-center text-center">
-            <Logo />
+            <Logo src={settings.site_logo || undefined} imgClassName="h-20" />
             <h1 className="mt-6 font-display text-2xl font-bold text-navy-900">
               {t("auth.loginTitle")}
             </h1>

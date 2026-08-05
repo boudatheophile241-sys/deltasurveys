@@ -70,7 +70,7 @@ export function Header({ user, logoSrc }: { user?: AuthUser; logoSrc?: string })
     >
       <div className="container-page">
         <div className="flex h-20 items-center gap-4">
-          <Logo src={logoSrc} />
+          <Logo src={logoSrc} imgClassName="h-14 sm:h-16" />
 
           {/* Barre de recherche centrale */}
           <form

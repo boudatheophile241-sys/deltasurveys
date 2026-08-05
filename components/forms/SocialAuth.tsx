@@ -24,10 +24,16 @@ function FacebookIcon() {
   );
 }
 
+// Boutons sociaux masqués tant que les fournisseurs OAuth ne sont pas activés
+// dans Supabase. Mettre NEXT_PUBLIC_SOCIAL_AUTH="1" (env Vercel) pour les afficher.
+const SOCIAL_AUTH_ENABLED = process.env.NEXT_PUBLIC_SOCIAL_AUTH === "1";
+
 export function SocialAuth({ redirectTo }: { redirectTo?: string }) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<"google" | "facebook" | null>(null);
   const [failed, setFailed] = useState(false);
+
+  if (!SOCIAL_AUTH_ENABLED) return null;
 
   const signIn = async (provider: "google" | "facebook") => {
     setLoading(provider);

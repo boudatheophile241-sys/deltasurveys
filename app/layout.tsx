@@ -68,6 +68,8 @@ export default async function RootLayout({
   const locale: Locale = localeCookie === "en" ? "en" : defaultLocale;
 
   const settings = await getSiteSettings();
+  const headerLogoSize = parseInt(settings.logo_header_size, 10) || 80;
+  const footerLogoSize = parseInt(settings.logo_footer_size, 10) || 44;
 
   const supabase = await createClient();
   const {
@@ -99,9 +101,9 @@ export default async function RootLayout({
                 linkLabel={settings.banner_link_label || undefined}
               />
             )}
-            <Header user={authUser} logoSrc={settings.site_logo || undefined} />
+            <Header user={authUser} logoSrc={settings.site_logo || undefined} logoHeight={headerLogoSize} />
             <main>{children}</main>
-            <Footer logoSrc={settings.site_logo || undefined} />
+            <Footer logoSrc={settings.site_logo || undefined} logoHeight={footerLogoSize} />
             <WhatsAppFloat />
             <DeltaAIWidget />
           </CartProvider>

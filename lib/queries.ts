@@ -269,6 +269,8 @@ const DEFAULT_SETTINGS: SiteSettings = {
   hero_subtitle: "",
   site_logo: "",
   hero_image: "",
+  logo_header_size: "80",
+  logo_footer_size: "44",
 };
 
 /** Renvoie tous les paramètres de contenu du site (map clé -> valeur). */

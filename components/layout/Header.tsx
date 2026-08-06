@@ -38,7 +38,15 @@ const NAV_KEYS: Record<string, DictKey> = {
 
 type AuthUser = { name: string; role: string } | null;
 
-export function Header({ user, logoSrc }: { user?: AuthUser; logoSrc?: string }) {
+export function Header({
+  user,
+  logoSrc,
+  logoHeight,
+}: {
+  user?: AuthUser;
+  logoSrc?: string;
+  logoHeight?: number;
+}) {
   const { count } = useCart();
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
@@ -69,8 +77,8 @@ export function Header({ user, logoSrc }: { user?: AuthUser; logoSrc?: string })
       )}
     >
       <div className="container-page">
-        <div className="flex h-24 items-center gap-4">
-          <Logo src={logoSrc} imgClassName="h-16 sm:h-20" />
+        <div className="flex min-h-[6rem] items-center gap-4 py-2">
+          <Logo src={logoSrc} imgClassName="h-16 sm:h-20" heightPx={logoHeight} />
 
           {/* Barre de recherche centrale */}
           <form

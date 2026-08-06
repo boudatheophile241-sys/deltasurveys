@@ -7,6 +7,8 @@ type LogoProps = {
   src?: string;
   /** Classe(s) pour dimensionner l'image du logo téléversé (ex. "h-14"). */
   imgClassName?: string;
+  /** Hauteur en pixels du logo téléversé (prioritaire, réglable depuis l'admin). */
+  heightPx?: number;
 };
 
 /**
@@ -14,14 +16,19 @@ type LogoProps = {
  * l'image est utilisée ; sinon un logo vectoriel de repli aux couleurs de la
  * marque est affiché.
  */
-export function Logo({ className, variant = "dark", src, imgClassName }: LogoProps) {
+export function Logo({ className, variant = "dark", src, imgClassName, heightPx }: LogoProps) {
   const delta = variant === "light" ? "text-white" : "text-brand-blue";
 
   if (src) {
     return (
       <Link href="/" className={cn("inline-flex items-center", className)} aria-label="Delta Surveys — Accueil">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="Delta Surveys" className={cn("h-11 w-auto object-contain", imgClassName)} />
+        <img
+          src={src}
+          alt="Delta Surveys"
+          className={cn("h-11 w-auto object-contain", imgClassName)}
+          style={heightPx ? { height: `${heightPx}px` } : undefined}
+        />
       </Link>
     );
   }

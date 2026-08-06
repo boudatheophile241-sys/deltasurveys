@@ -514,6 +514,8 @@ const SETTING_KEYS = [
   "hero_subtitle",
   "site_logo",
   "hero_image",
+  "logo_header_size",
+  "logo_footer_size",
 ];
 
 export async function saveSettings(

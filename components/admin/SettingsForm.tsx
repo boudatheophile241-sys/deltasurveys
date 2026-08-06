@@ -25,6 +25,8 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
   const [state, formAction] = useActionState<AdminState, FormData>(saveSettings, null);
   const [logo, setLogo] = useState(settings.site_logo ?? "");
   const [heroImage, setHeroImage] = useState(settings.hero_image ?? "");
+  const [headerSize, setHeaderSize] = useState(settings.logo_header_size || "80");
+  const [footerSize, setFooterSize] = useState(settings.logo_footer_size || "44");
 
   return (
     <form action={formAction} className="space-y-8">
@@ -55,6 +57,56 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
             </div>
             <input name="hero_image" value={heroImage} onChange={(e) => setHeroImage(e.target.value)} className={inputCls} placeholder="URL de la photo d'accueil" />
             <p className="mt-1 text-xs text-navy-400">Affichée dans la section d&apos;accueil.</p>
+          </div>
+        </div>
+
+        {/* Taille des logos (zoom réglable) */}
+        <div className="mt-6 border-t border-navy-100 pt-6">
+          <h3 className="mb-1 text-sm font-semibold text-navy-800">Taille des logos</h3>
+          <p className="mb-4 text-xs text-navy-400">
+            Faites glisser pour agrandir ou réduire. L&apos;aperçu est en direct ; cliquez sur « Enregistrer » pour appliquer au site.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label className={labelCls}>Logo de l&apos;en-tête — {headerSize} px</label>
+              <input
+                type="range"
+                min={32}
+                max={140}
+                value={headerSize}
+                onChange={(e) => setHeaderSize(e.target.value)}
+                className="w-full accent-brand-red"
+              />
+              <input type="hidden" name="logo_header_size" value={headerSize} />
+              <div className="mt-3 flex min-h-[6rem] items-center justify-center rounded-xl border border-navy-100 bg-white p-3">
+                {logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={logo} alt="Aperçu logo en-tête" style={{ height: `${headerSize}px` }} className="w-auto object-contain" />
+                ) : (
+                  <span className="text-xs text-navy-400">Ajoutez un logo pour l&apos;aperçu</span>
+                )}
+              </div>
+            </div>
+            <div>
+              <label className={labelCls}>Logo du pied de page (fond bleu) — {footerSize} px</label>
+              <input
+                type="range"
+                min={32}
+                max={140}
+                value={footerSize}
+                onChange={(e) => setFooterSize(e.target.value)}
+                className="w-full accent-brand-red"
+              />
+              <input type="hidden" name="logo_footer_size" value={footerSize} />
+              <div className="mt-3 flex min-h-[6rem] items-center justify-center rounded-xl border border-navy-900 bg-navy-950 p-3">
+                {logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={logo} alt="Aperçu logo pied de page" style={{ height: `${footerSize}px` }} className="w-auto object-contain" />
+                ) : (
+                  <span className="text-xs text-white/40">Ajoutez un logo pour l&apos;aperçu</span>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>

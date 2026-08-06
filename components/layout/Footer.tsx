@@ -19,7 +19,7 @@ const quickLinks: { key: DictKey; href: string }[] = [
   { key: "nav.contact", href: "/contact" },
 ];
 
-export function Footer({ logoSrc }: { logoSrc?: string }) {
+export function Footer({ logoSrc, logoHeight }: { logoSrc?: string; logoHeight?: number }) {
   const { t } = useTranslation();
   return (
     <footer className="bg-navy-950 text-white">
@@ -37,7 +37,7 @@ export function Footer({ logoSrc }: { logoSrc?: string }) {
       {/* Corps du footer */}
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <Logo variant="light" src={logoSrc} />
+          <Logo variant="light" src={logoSrc} heightPx={logoHeight} />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
             {t("footer.about")}
           </p>
